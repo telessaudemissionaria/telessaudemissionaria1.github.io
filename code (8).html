@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telessaúde Missionária: Cuidado e Esperança</title>
+    <!-- <link rel="icon" href="favicon.ico"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> -->
+    <style>
+        /* Aplicando a Nova Paleta de Cores e Ajustes de Fonte */
+        :root {
+            --color-primary-action: #FF4040;
+            --color-primary-hover: #E63939;
+            --color-secondary-action: #40BFFF;
+            --color-secondary-hover: #3AAEE6;
+            --color-background-soft: #FFCFCF;
+            --color-background-pastel: #FFD2D2;
+            --color-background-very-soft: #FFF5F5;
+            
+            --color-text-body: #000000; /* ALTERADO PARA PRETO */
+            --color-text-on-dark: #FFFFFF;
+            --color-text-headings: #B30000; /* Mantendo headings com cor para destaque, mas o corpo será preto */
+            --color-text-subtle: #333333; /* Um cinza escuro para parágrafos, próximo ao preto */
+
+            --color-icons-details: #FF4066;
+            --color-footer-bg: #092635;
+            --color-footer-text: #C0D3DA;
+        }
+
+        /* Reset Básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', 'Inter', Arial, sans-serif;
+            line-height: 1.7; /* Aumentado para melhor legibilidade com fontes maiores */
+            color: var(--color-text-body); /* COR DO TEXTO PRINCIPAL ALTERADA PARA PRETO */
+            background-color: var(--color-text-on-dark);
+            font-size: 17px; /* TAMANHO DA FONTE BASE AUMENTADO */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1140px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 0 15px;
+        }
+
+        /* Tipografia */
+        h1, h2, h3 {
+            margin-bottom: 20px; /* Aumentado espaçamento */
+            color: var(--color-text-headings);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.3; /* Ajustado para títulos */
+        }
+        
+        h1 { font-size: 2.8em; font-weight: 300; } /* Tamanhos de fonte ajustados */
+        h2 { font-size: 2.0em; font-weight: 600; }
+        h3 { font-size: 1.7em; font-weight: 600; }
+
+        p {
+            margin-bottom: 18px; /* Aumentado espaçamento */
+            font-size: 1.05em; /* Levemente maior relativo ao body */
+            color: var(--color-text-subtle);
+        }
+        section p { font-size: 1.1em; }
+
+
+        /* Navegação */
+        nav.main-nav {
+            background: var(--color-primary-action);
+            color: var(--color-text-on-dark);
+            padding: 12px 0; /* Aumentado padding */
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
+        }
+
+        nav.main-nav ul { list-style: none; }
+        nav.main-nav ul li { display: inline; margin: 0 18px; } /* Aumentado margem */
+        nav.main-nav ul li a {
+            color: var(--color-text-on-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05em; /* Aumentado tamanho da fonte da nav */
+        }
+        nav.main-nav ul li a:hover { text-decoration: underline; }
+
+        /* Seção Hero */
+        #hero {
+            background: linear-gradient(135deg, #FF6A40 0%, #FF4040 50%, #CC0033 100%);
+            color: var(--color-text-on-dark);
+            text-align: center;
+            padding: 120px 20px; /* Aumentado padding */
+            position: relative;
+        }
+
+        #hero .hero-content { position: relative; z-index: 1; }
+        #hero h1 { color: var(--color-text-on-dark); margin-bottom: 25px; }
+        #hero .subtitle {
+            font-size: 1.3em; /* Aumentado */
+            margin-bottom: 35px; /* Aumentado */
+            color: rgba(255, 255, 255, 0.95); /* Mais opaco */
+        }
+
+        /* Botões CTA */
+        .cta-button {
+            display: inline-block;
+            background: var(--color-primary-action);
+            color: var(--color-text-on-dark);
+            padding: 14px 30px; /* Aumentado padding */
+            text-decoration: none;
+            border-radius: 25px; /* Aumentado raio */
+            font-weight: 600;
+            font-size: 1.1em; /* Aumentado tamanho da fonte */
+            margin: 10px 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 12px rgba(255,64,64,.25);
+        }
+        .cta-button:hover {
+            background-color: var(--color-primary-hover);
+            transform: translateY(-2px);
+        }
+        .cta-button.secondary {
+            background: var(--color-secondary-action);
+            box-shadow: 0 4px 12px rgba(64, 191, 255, .25);
+        }
+        .cta-button.secondary:hover {
+            background: var(--color-secondary-hover);
+        }
+
+
+        /* Seções Gerais */
+        section {
+            padding: 90px 0; /* Aumentado padding */
+            border-bottom: 1px solid #dddddd; /* Divisor mais sutil */
+        }
+        section:nth-child(even):not(#hero) { /* Ajustado para even para variar com o hero */
+             background-color: var(--color-background-very-soft);
+        }
+        section:last-of-type { border-bottom: none; }
+        section h2 { text-align: center; margin-bottom: 50px; }
+
+        /* Ícones */
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            color: var(--color-icons-details);
+            border: 2px solid var(--color-icons-details);
+            width: 70px; /* Aumentado */
+            height: 70px; /* Aumentado */
+            border-radius: 50%;
+            margin-right: 20px; /* Aumentado */
+            font-size: 32px; /* Aumentado */
+            flex-shrink: 0;
+        }
+
+        /* Lista de Benefícios */
+        #beneficios ul { list-style: none; padding: 0; max-width: 850px; margin: 0 auto; }
+        #beneficios ul li { margin-bottom: 25px; display: flex; align-items: center; }
+
+        /* Como Funciona - Passos */
+        #como-funciona ol { list-style: none; counter-reset: steps-counter; padding-left: 0; max-width: 850px; margin: 0 auto; }
+        #como-funciona ol li { counter-increment: steps-counter; margin-bottom: 25px; padding-left: 60px; position: relative; } /* Aumentado padding */
+        #como-funciona ol li::before {
+            content: counter(steps-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: var(--color-primary-action);
+            color: var(--color-text-on-dark);
+            width: 40px; /* Aumentado */
+            height: 40px; /* Aumentado */
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px; /* Aumentado */
+            font-weight: 600;
+            font-size: 1.1em; /* Aumentado */
+        }
+        .whatsapp-info {
+            background-color: var(--color-background-pastel);
+            border-left: 5px solid var(--color-primary-action);
+            padding: 18px; /* Aumentado */
+            margin-top: 12px; /* Aumentado */
+            border-radius: 5px; /* Aumentado raio */
+        }
+        .whatsapp-info strong { color: #B30000; }
+
+
+        /* Testemunhos */
+        #testemunhos .testimonial {
+            background: var(--color-text-on-dark);
+            padding: 30px; /* Aumentado */
+            margin-bottom: 25px; /* Aumentado */
+            border-radius: 8px; /* Aumentado raio */
+            box-shadow: 0 3px 10px rgba(0,0,0,.1);
+            max-width: 750px; /* Aumentado */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #testemunhos .testimonial p { font-style: italic; color: var(--color-text-subtle); }
+        #testemunhos .testimonial .author {
+            text-align: right;
+            font-weight: 600;
+            margin-top: 15px; /* Aumentado */
+            color: var(--color-primary-action);
+            font-size: 1.05em; /* Aumentado */
+        }
+
+        /* Seção Interativa - Grupos Regionais */
+        #grupos-regionais {
+            background-color: var(--color-background-pastel); /* Fundo diferenciado */
+            text-align: center;
+        }
+        #grupos-regionais h2 .map-icon {
+            font-size: 1.2em; /* Ícone de mapa um pouco maior que o texto do h2 */
+            vertical-align: middle;
+        }
+        #grupos-regionais .intro-text {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: var(--color-text-body);
+        }
+        .group-info-list {
+            list-style: none;
+            padding: 0;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            text-align: left;
+        }
+        .group-info-list li {
+            margin-bottom: 18px;
+            padding-left: 35px;
+            position: relative;
+        }
+        .group-info-list li .list-icon {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 1.3em;
+            color: var(--color-primary-action);
+        }
+        .group-info-list li strong {
+            color: var(--color-text-headings);
+            font-weight: 600;
+        }
+        #grupos-regionais .cta-button {
+            background-color: var(--color-secondary-action); /* Usando cor secundária para este CTA */
+            box-shadow: 0 4px 12px rgba(64, 191, 255, .25);
+        }
+         #grupos-regionais .cta-button:hover {
+            background-color: var(--color-secondary-hover);
+        }
+
+
+        /* FAQ Section */
+        #faq {
+            padding: 90px 0;
+            /* background-color: var(--color-background-very-soft); */ /* Removido para alternar com a nova seção */
+        }
+        #faq h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--color-text-headings);
+        }
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background-color: var(--color-text-on-dark);
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+        .faq-question {
+            padding: 20px; /* Aumentado padding */
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--color-text-body); /* Pergunta em preto */
+            font-size: 1.15em; /* Aumentado tamanho da fonte */
+        }
+        .faq-question .icon {
+            font-size: 1.5em; /* Aumentado ícone */
+            color: var(--color-primary-action);
+            transition: transform 0.3s ease-in-out;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out; /* Adicionado padding na transição */
+            padding: 0 20px;
+        }
+        .faq-answer p {
+            font-size: 1.05em; /* Aumentado */
+            color: var(--color-text-subtle);
+            padding-bottom: 20px; /* Adicionado padding aqui para o texto não colar */
+        }
+        .faq-item.active .faq-question .icon {
+            transform: rotate(45deg);
+        }
+        .faq-item.active .faq-answer {
+            max-height: 400px; /* Ajustar conforme necessário para o conteúdo da resposta */
+            padding-top: 0; /* Padding já está no P */
+        }
+
+
+        /* Rodapé */
+        footer#contato {
+            background: var(--color-footer-bg);
+            color: var(--color-footer-text);
+            text-align: center;
+            padding: 50px 0; /* Aumentado */
+        }
+        footer#contato p { margin-bottom: 12px; color: var(--color-footer-text); font-size: 1.05em; /* Aumentado */ }
+        footer#contato a {
+            color: var(--color-secondary-action);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        footer#contato a:hover { text-decoration: underline; color: #6FCFFF; }
+        footer#contato .footer-logo {
+            margin-bottom: 20px; /* Aumentado */
+            font-weight: bold;
+            font-size: 1.3em; /* Aumentado */
+            color: var(--color-text-on-dark);
+        }
+        footer#contato .contact-info p { color: var(--color-footer-text); }
+
+
+        /* Responsividade */
+        @media (max-width: 991px) {
+            body { font-size: 16px; } /* Ajuste base para mobile */
+            h1 { font-size: 2.4em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.5em; }
+            section { padding: 70px 0; }
+            #hero { padding: 90px 15px; }
+
+            .cta-button { width: 95%; max-width: 320px; }
+            nav.main-nav ul li { display: block; margin: 12px 0; }
+            #como-funciona ol li { padding-left: 0; padding-top: 50px; }
+            #como-funciona ol li::before { left: 50%; transform: translateX(-50%); }
+            #beneficios ul li { flex-direction: column; text-align: center; }
+            #beneficios ul li .icon { margin-right: 0; margin-bottom: 15px; }
+            .faq-question { font-size: 1.1em; padding: 18px; }
+            .group-info-list li { padding-left: 30px; } /* Ajuste para mobile */
+            .group-info-list li .list-icon { font-size: 1.2em; }
+
+        }
+        @media (max-width: 767px) {
+             h1 { font-size: 2.1em; }
+             h2 { font-size: 1.6em; }
+             body { font-size: 15px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#sobre">O Que É</a></li>
+                <li><a href="#beneficios">Benefícios</a></li>
+                <li><a href="#como-funciona">Como Funciona</a></li>
+                <li><a href="#voluntarios">Seja Voluntário</a></li>
+                <li><a href="#doar">Apoie</a></li>
+                <li><a href="#grupos-regionais">Conecte-se</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="hero">
+        <div class="hero-content container">
+            <h1>Telessaúde Missionária: Cuidado e Esperança Onde Quer Que Você Esteja</h1>
+            <p class="subtitle">Conectando missionários a uma rede de profissionais de saúde voluntários para suporte médico, emocional e espiritual através da tecnologia.</p>
+            <div>
+                <a href="https://wa.me/59173346906" target="_blank" class="cta-button">PRECISA DE ORIENTAÇÃO MÉDICA?</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="sobre">
+            <div class="container">
+                <h2>O Que é a Telessaúde Missionária?</h2>
+                <p>A Telessaúde Missionária é uma iniciativa inovadora, formada por profissionais de saúde voluntários, dedicada a fornecer cuidados de saúde acessíveis, rápidos e eficientes a missionários cristãos e suas famílias, especialmente aqueles que servem em locais remotos com acesso limitado a serviços médicos.</p>
+                <p>Nosso objetivo primordial é garantir que missionários possam manter sua saúde e bem-estar físico, emocional e espiritual, permitindo que cumpram sua vocação com vigor e paz. Entendemos este serviço como um ministério de apoio à jornada de fé, uma expressão tangível do cuidado e amor de Cristo por Seus servos, inspirado pelo exemplo de Gaio, que hospedou e ajudou os missionários que passavam por sua cidade (3 João 1:5-8).</p>
+            </div>
+        </section>
+
+        <section id="publico-alvo">
+            <div class="container">
+                <h2>Um Cuidado Dedicado a Você, Missionário</h2>
+                <p>Nesta fase piloto, o serviço da Telessaúde Missionária é oferecido exclusivamente para missionários cristãos e suas famílias que estão servindo em campo. Nosso foco principal são aqueles que atuam em regiões remotas ou desafiadoras nos continentes da Ásia, Oceania, Américas, África e Europa, onde o acesso a serviços médicos de qualidade pode ser escasso ou inexistente.</p>
+                <p><strong>Importante:</strong> Este serviço é um apoio complementar e não substitui o atendimento médico local disponível. Encorajamos os missionários a utilizarem os recursos de saúde locais sempre que forem acessíveis e adequados. A Telessaúde Missionária não se destina ao atendimento das comunidades onde os missionários servem, mas sim ao cuidado direto do obreiro e sua família.</p>
+            </div>
+        </section>
+
+        <section id="beneficios">
+            <div class="container">
+                <h2>Benefícios Que Fazem a Diferença na Sua Missão</h2>
+                <ul>
+                    <li><span class="icon">❤️</span> Acesso a cuidados de saúde de qualidade onde quer que estejam.</li>
+                    <li><span class="icon">🤝</span> Suporte integral e holístico (físico, emocional, espiritual, aconselhamento psicológico).</li>
+                    <li><span class="icon">⏱️</span> Economia de tempo e recursos, evitando deslocamentos desnecessários.</li>
+                    <li><span class="icon">🗓️</span> Flexibilidade e conveniência com agendamentos adaptados à sua realidade.</li>
+                    <li><span class="icon">🔒</span> Segurança e confidencialidade em plataformas seguras (em conformidade com LGPD/HIPAA).</li>
+                    <li><span class="icon">📈</span> Apoio continuado e acompanhamento dedicado durante seu tratamento.</li>
+                    <li><span class="icon">🌍</span> Conexão com uma Rede de Apoio Global que compreende os desafios da vida missionária.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="como-funciona">
+            <div class="container">
+                <h2>Nosso Processo de Cuidado: Simples e Eficaz</h2>
+                <ol>
+                    <li>
+                        <strong>Solicitação:</strong> O missionário entra em contato através do grupo regional de WhatsApp correspondente à sua localização (Ásia, Oceania, Américas, África ou Europa).
+                        <div class="whatsapp-info">
+                            <strong>Atenção:</strong> NÃO utilize o grupo global de WhatsApp para solicitações de atendimento. Use apenas o grupo da sua região.
+                        </div>
+                    </li>
+                    <li><strong>Triagem por Enfermagem:</strong> Nossa equipe de enfermagem (primeiro contato) responde à solicitação, realiza uma avaliação inicial e informa sobre a necessidade de preencher um questionário online (via Google Forms) para verificação da elegibilidade.</li>
+                    <li><strong>Verificação:</strong> Confirmamos a autenticidade da solicitação e a necessidade real do atendimento, verificando também se o serviço não está substituindo um atendimento local viável e adequado.</li>
+                    <li><strong>Conexão com Profissional:</strong> A enfermeira conecta o missionário ao profissional de saúde voluntário mais adequado, considerando a especialidade, idioma e contexto cultural. Toda a comunicação inicial é gerida pela equipe de enfermagem.</li>
+                    <li><strong>Agendamento:</strong> A enfermeira comunica ao missionário a data e hora do agendamento da consulta.</li>
+                    <li><strong>Consulta Online:</strong> A consulta é realizada por videochamada, geralmente através do Google Meet, de forma segura e confidencial.</li>
+                </ol>
+                <p style="text-align:center; margin-top: 30px; font-style: italic;">Estamos constantemente trabalhando para melhorar nossos processos e em breve lançaremos uma plataforma mais automatizada para facilitar ainda mais o seu acesso ao cuidado!</p>
+            </div>
+        </section>
+        
+        <section id="legado">
+            <div class="container">
+                <h2>Honrando um Legado, Construindo um Futuro de Cuidado</h2>
+                <p>A Telessaúde Missionária nasceu do desejo de ver missionários florescendo em seus campos, sem que doenças tratáveis ou a falta de suporte emocional interrompam o chamado de Deus para suas vidas. Honramos o sacrifício de inúmeros missionários do passado, como William Carey e Adoniram Judson, que enfrentaram enormes desafios de saúde, e buscamos prover aos obreiros de hoje as ferramentas para um ministério longevo e saudável.</p>
+            </div>
+        </section>
+
+        <section id="voluntarios">
+            <div class="container">
+                <h2>Mãos Que Servem: Junte-se a Nós!</h2>
+                <p>Este ministério só é possível graças à dedicação de profissionais voluntários de diversas áreas: médicos (clínicos e especialistas), enfermeiros, dentistas, psicólogos, fisioterapeutas, nutricionistas, farmacêuticos, além de profissionais de TI, tradutores, administradores e conselheiros espirituais. Cada um doa seu tempo e talento para ser um canal de bênção.</p>
+                <p>Se você é um profissional cristão e sente o chamado para servir missionários com seus dons, convidamos você a se juntar à nossa equipe. Seu conhecimento e compaixão podem ser uma ponte de saúde e esperança para aqueles que estão na linha de frente do Reino.</p>
+                <div style="text-align: center; margin-top:20px;">
+                    <a href="https://wa.me/59173346906" target="_blank" class="cta-button secondary">Quero Ser Voluntário</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="doar">
+            <div class="container">
+                <h2>Sua Generosidade Sustenta Esta Missão</h2>
+                <p>A Telessaúde Missionária oferece seus serviços de forma totalmente gratuita aos missionários e suas famílias. Este ministério é sustentado pela generosidade de indivíduos, igrejas e organizações que acreditam na importância de cuidar daqueles que dedicam suas vidas a levar o Evangelho.</p>
+                <p>Com sua doação, você nos ajuda a cobrir custos operacionais, manter e desenvolver nossa plataforma tecnológica, e expandir nosso alcance para que mais missionários recebam o cuidado essencial de que precisam. Cada contribuição, grande ou pequena, faz uma diferença significativa.</p>
+                <div style="text-align: center; margin-top:20px;">
+                    <a href="https://wa.me/59173346906" target="_blank" class="cta-button">Quero Doar</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="testemunhos">
+            <div class="container">
+                <h2>Histórias de Cuidado e Impacto</h2>
+                <div class="testimonial">
+                    <p>"A missionária no Camboja, veio ao Brasil para exames médicos, mas não conseguiu consulta a tempo para receber os resultados. De volta ao campo, ficou apreensiva, mas através da Telessaúde Missionária, recebeu teleorientação ao analisarem os exames, garantindo que tudo estava bem, e passarem orientações sobre dieta. Com essa assistência, a missionária sentiu-se mais tranquila para continuar sua missão com confiança e paz."</p>
+                    <p class="author">- Missionário na Ásia (anonimizado)</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Uma missionária recém-casada, atuando na Ilha de Marajó, sentiu-se mal e com dores. Buscou ajuda na Telessaúde. Após exames, descobriu-se uma gravidez, trazendo grande alegria ao casal. Ela agora está fazendo acompanhamento pré-natal, recebendo orientações da equipe médica."</p>
+                    <p class="author">- Missionária na América do Sul (anonimizado)</p>
+                </div>
+                 <div class="testimonial">
+                    <p>"O missionário e sua família, missionários no Quênia, enfrentaram um desafio com a saúde da filha. Ela apresentou sintomas de um vírus. Em contato com a Telessaúde, a enfermeira e uma médica de Moçambique ofereceram suporte, indicando um medicamento com menos efeitos colaterais. Agradecem o apoio e a comunidade."</p>
+                    <p class="author">- Família Missionária na África (anonimizado)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="futuro">
+            <div class="container">
+                <h2>O Futuro da Telessaúde Missionária: Expandindo o Cuidado</h2>
+                <p>Nossa visão é continuar crescendo e aprimorando nossos serviços. Planejamos expandir para mais especialidades médicas, como pediatria, ginecologia e psiquiatria, oferecer programas de treinamento em saúde preventiva para missionários, e implementar tecnologias avançadas, incluindo Inteligência Artificial para auxiliar na triagem e suporte.</p>
+                <p>O lançamento da nossa plataforma digital automatizada será um marco importante, tornando o acesso ao cuidado ainda mais ágil e eficiente. Contamos com suas orações e apoio para transformar essa visão em realidade!</p>
+            </div>
+        </section>
+
+        <section id="grupos-regionais">
+            <div class="container">
+                <h2><span class="map-icon">🗺️</span> Conecte-se à Nossa Rede de Apoio</h2>
+                <p class="intro-text">Seu mapa de acesso para comunidades e recursos está aqui. Explore nossos espaços de conexão:</p>
+                <ul class="group-info-list">
+                    <li><span class="list-icon">🌏</span><strong>Grupos Regionais (Europa, Oceania, África, Américas, Ásia):</strong> Conecte-se com missionários da sua área para trocar experiências e apoio específico sobre os desafios locais, seja na secularizada Europa, nas ilhas da Oceania, na diversa África, nas contrastantes Américas ou na desafiadora Ásia.</li>
+                    <li><span class="list-icon">🌐</span><strong>Rede Global:</strong> Nosso ponto de encontro geral para todos os missionários, para compartilhar, orar e crescer juntos.</li>
+                    <li><span class="list-icon">💡</span><strong>HealthTech Missionária:</strong> Um espaço para explorar como a tecnologia pode impulsionar a telessaúde na missão.</li>
+                </ul>
+                <p>É só clicar no link abaixo, escolher seu(s) grupo(s) na página e pronto! Você estará conectado(a).</p>
+                <a href="https://telessaudemissionaria.github.io/" target="_blank" class="cta-button">Visite Nossa Página de Grupos</a>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="container">
+                <h2>Perguntas Frequentes</h2>
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <div class="faq-question">1. O que é a Telessaúde Missionária? <span class="icon">+</span></div>
+                        <div class="faq-answer"><p>É uma iniciativa que conecta missionários em locais remotos com profissionais de saúde voluntários, oferecendo cuidados médicos, emocionais e espirituais através da tecnologia.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">2. Para quem é este serviço? <span class="icon">+</span></div>
+                        <div class="faq-answer"><p>É para missionários cristãos e suas famílias que servem em áreas remotas ou com pouco acesso a serviços de saúde.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">3. Que tipo de cuidados oferece? <span class="icon">+</span></div>
+                        <div class="faq-answer"><p>Oferece consultas médicas online, apoio emocional e psicológico, suporte espiritual e orientações de saúde.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">4. Como funciona o atendimento? <span class="icon">+</span></div>
+                        <div class="faq-answer"><p>O missionário entra em contato pelo grupo regional de WhatsApp, a equipe de enfermagem faz uma triagem e agenda uma consulta online com um profissional de saúde.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">5. É gratuito? <span class="icon">+</span></div>
+                        <div class="faq-answer"><p>Sim, o serviço de teleorientação e aconselhamento é gratuito para os missionários, sustentado por doações e voluntariado.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">6. Quem são os profissionais de saúde? <span class="icon">+</span></div>
+                        <div class="faq-answer"><p>São médicos, enfermeiros, psicólogos e outros profissionais voluntários que doam seu tempo e conhecimento.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">7. Como a Telessaúde Missionária protege meus dados? <span class="icon">+</span></div>
+                        <div class="faq-answer"><p>Utiliza plataformas seguras e segue as leis de proteção de dados para garantir a privacidade e confidencialidade das informações.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">8. Como posso apoiar? <span class="icon">+</span></div>
+                        <div class="faq-answer"><p>Você pode apoiar como voluntário profissional, fazendo doações para sustentar o projeto, ou intercedendo em oração por este ministério e pelos missionários.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-logo">Telessaúde Missionária<br><small>Medicine in the Name of Jesus</small></div>
+            <p><strong>Informações Gerais (NÃO para solicitações de atendimento):</strong></p>
+            <div class="contact-info">
+                <p>E-mail: <a href="mailto:missionarymedicalcare@gmail.com">missionarymedicalcare@gmail.com</a></p>
+                <p>WhatsApp (Info): <a href="https://wa.me/59173346906" target="_blank">+591 7334 6906</a> (Samuel Silva)</p>
+            </div>
+            <p style="margin-top:20px;"><strong>Para solicitar atendimento, missionários devem contatar o grupo de WhatsApp de sua respectiva região.</strong></p>
+            <p><a href="link-para-politica-de-privacidade.html">Política de Privacidade</a> (Em conformidade com LGPD/HIPAA)</p>
+            <p>© <span id="currentYear"></span> Telessaúde Missionária. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Script para FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                // Opcional: fechar outros itens ao abrir um novo
+                // faqItems.forEach(i => {
+                //     if (i !== item) {
+                //         i.classList.remove('active');
+                //     }
+                // });
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
